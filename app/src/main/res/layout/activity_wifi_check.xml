@@ -7,22 +7,10 @@
     android:paddingRight="0dp"
     android:paddingTop="0dp"
     android:paddingBottom="0dp"
-    android:background="#ff000000"
+    android:background="#ffffffff"
     tools:context="com.ToxicBakery.viewpager.transforms.example.LoadingActivity">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/loading_imageView"
-        android:src="@drawable/linkage_main_image"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" /><![CDATA[
-
-    Button
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Proceed without Wi-Fi"
@@ -33,7 +21,17 @@
         android:layout_alignParentEnd="true"
         android:textSize="18sp" />
 
-    TextView
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Connect to Wi-Fi"
+        android:id="@+id/connectButton"
+        android:layout_alignTop="@+id/proceedButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textSize="18sp" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -43,11 +41,11 @@
         android:textColor="#ff000000"
         android:textSize="28sp"
         android:textIsSelectable="false"
-        android:background="#6600FF00"
+        android:background="#ffffffff"
         android:layout_above="@+id/proceedButton"
         android:layout_centerHorizontal="true" />
 
-    ImageView
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/wifi_cant_use"
@@ -56,5 +54,4 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="28dp" />
 
-]]>
 </RelativeLayout>
