@@ -29,7 +29,9 @@
         android:layout_alignTop="@+id/proceedButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_toLeftOf="@+id/proceedButton"
+        android:layout_toStartOf="@+id/proceedButton" />
 
     <TextView
         android:layout_width="wrap_content"

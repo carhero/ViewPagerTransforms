@@ -16,8 +16,6 @@
 
 package com.ToxicBakery.viewpager.transforms.example;
 
-import java.util.ArrayList;
-
 import android.app.ActionBar;
 import android.app.ActionBar.OnNavigationListener;
 import android.app.Activity;
@@ -27,6 +25,7 @@ import android.os.Bundle;
 import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.PageTransformer;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,11 +50,14 @@ import com.ToxicBakery.viewpager.transforms.ZoomInTransformer;
 import com.ToxicBakery.viewpager.transforms.ZoomOutSlideTransformer;
 import com.ToxicBakery.viewpager.transforms.ZoomOutTranformer;
 
+import java.util.ArrayList;
+
 public class MainActivity extends Activity implements OnNavigationListener {
 
     private static final String KEY_SELECTED_PAGE = "KEY_SELECTED_PAGE";
     private static final String KEY_SELECTED_CLASS = "KEY_SELECTED_CLASS";
     private static final ArrayList<TransformerItem> TRANSFORM_CLASSES;
+    private static final String TAG = "MainActivity";
 
     static {
         TRANSFORM_CLASSES = new ArrayList<>();
@@ -78,16 +80,39 @@ public class MainActivity extends Activity implements OnNavigationListener {
         TRANSFORM_CLASSES.add(new TransformerItem(ZoomOutTranformer.class));
     }
 
-    private int mSelectedItem;
+    private int mSelectedItem = 4;  // CubeOutTransformer
     private ViewPager mPager;
     private PageAdapter mAdapter;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Hide bar Actionbar button
+        /*if (Build.VERSION.SDK_INT < 16)
+        {
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
+        else
+        {
+            View decorView = getWindow().getDecorView();
+            // Hide the status bar.
+            int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+            decorView.setSystemUiVisibility(uiOptions);
+            // Remember that you should never show the action bar if the
+            // status bar is hidden, so hide that too if necessary.
+            ActionBar actionBar = getActionBar();
+            actionBar.hide();
+        }*/
+    }
 
     @SuppressWarnings("deprecation")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        int selectedPage = 0;
+        int selectedPage = 0;   // yhcha, Init Page set
         if (savedInstanceState != null) {
             mSelectedItem = savedInstanceState.getInt(KEY_SELECTED_CLASS);
             selectedPage = savedInstanceState.getInt(KEY_SELECTED_PAGE);
@@ -95,6 +120,7 @@ public class MainActivity extends Activity implements OnNavigationListener {
 
         final ArrayAdapter<TransformerItem> actionBarAdapter = new ArrayAdapter<TransformerItem>(
                 getApplicationContext(), android.R.layout.simple_list_item_1, android.R.id.text1, TRANSFORM_CLASSES);
+
 
         setContentView(R.layout.activity_main);
 
@@ -114,6 +140,15 @@ public class MainActivity extends Activity implements OnNavigationListener {
 
             actionBar.setSelectedNavigationItem(mSelectedItem);
         }
+        else
+        {
+            try {
+                mPager.setPageTransformer(true, TRANSFORM_CLASSES.get(mSelectedItem).clazz.newInstance());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+        //getActionBar().hide();
 
     }
 
@@ -125,7 +160,7 @@ public class MainActivity extends Activity implements OnNavigationListener {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
+        Log.d(TAG, "onNavigationItemSelected");
         return true;
     }
 
@@ -135,6 +170,7 @@ public class MainActivity extends Activity implements OnNavigationListener {
     }
 
     public static class PlaceholderFragment extends Fragment {
+        private static final String TAG = "PlaceholderFragment";
 
         private static final String EXTRA_POSITION = "EXTRA_POSITION";
         private static final int[] COLORS = new int[] { 0xFF33B5E5, 0xFFAA66CC, 0xFF99CC00, 0xFFFFBB33, 0xFFFF4444 };
@@ -153,17 +189,39 @@ public class MainActivity extends Activity implements OnNavigationListener {
 
     private static final class PageAdapter extends FragmentStatePagerAdapter {
 
+        private static final String TAG = "PageAdapter";
+
         public PageAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
         }
 
         @Override
-        public Fragment getItem(int position) {
-            final Bundle bundle = new Bundle();
-            bundle.putInt(PlaceholderFragment.EXTRA_POSITION, position + 1);
+        public int getItemPosition(Object object) {
+            return super.getItemPosition(object);
+        }
 
-            final PlaceholderFragment fragment = new PlaceholderFragment();
-            fragment.setArguments(bundle);
+        @Override
+        public Fragment getItem(int position) {
+            Fragment fragment;
+
+            // 여기에서 Page 전환 전 Layout 설정을 변경해준다.
+            switch(position)
+            {
+                case 0: fragment = Slide1Activity.create(position);    break;
+                case 1: fragment = Slide2Activity.create(position);    break;
+                case 2: fragment = Slide3Activity.create(position);    break;
+
+                default:
+                {
+                    final Bundle bundle = new Bundle();
+                    bundle.putInt(PlaceholderFragment.EXTRA_POSITION, position + 1);
+
+                    //final PlaceholderFragment fragment = new PlaceholderFragment();
+                    fragment = new PlaceholderFragment();
+                    fragment.setArguments(bundle);
+                }
+                break;
+            }
 
             return fragment;
         }

@@ -1,20 +1,16 @@
 package com.ToxicBakery.viewpager.transforms.example;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -35,9 +31,11 @@ public class LoadingActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //getActionBar().hide();
+
         // If the Android version is lower than Jellybean, use this call to hide
         // the status bar.
-        if (Build.VERSION.SDK_INT < 16)
+        /*if (Build.VERSION.SDK_INT < 16)
         {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -52,7 +50,8 @@ public class LoadingActivity extends Activity {
             // status bar is hidden, so hide that too if necessary.
             ActionBar actionBar = getActionBar();
             actionBar.hide();
-        }
+        }*/
+
         setContentView(R.layout.activity_loading);
         // 3sec Thread needed to escape loading page
 
