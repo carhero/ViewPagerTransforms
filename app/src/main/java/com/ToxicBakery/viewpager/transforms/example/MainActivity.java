@@ -16,11 +16,12 @@
 
 package com.ToxicBakery.viewpager.transforms.example;
 
-import android.app.ActionBar;
+import android.annotation.TargetApi;
 import android.app.ActionBar.OnNavigationListener;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -107,6 +108,7 @@ public class MainActivity extends Activity implements OnNavigationListener {
         }*/
     }
 
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     @SuppressWarnings("deprecation")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,7 +132,8 @@ public class MainActivity extends Activity implements OnNavigationListener {
         mPager.setAdapter(mAdapter);
         mPager.setCurrentItem(selectedPage);
 
-        final ActionBar actionBar = getActionBar();
+        getActionBar().hide();
+        /*final ActionBar actionBar = getActionBar();
         if (actionBar != null) {
             actionBar.setListNavigationCallbacks(actionBarAdapter, this);
             actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
@@ -147,9 +150,9 @@ public class MainActivity extends Activity implements OnNavigationListener {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-        }
-        //getActionBar().hide();
-
+        }*/
+        //mPager.arrowScroll(ViewPager.SCROLL_AXIS_HORIZONTAL);
+        mPager.setPageTransformer(true, new CubeOutTransformer()); //set the animation
     }
 
     @Override
