@@ -21,7 +21,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Toast;
 
 
@@ -43,6 +46,12 @@ public class SetupMenuActivity extends Fragment {
      */
     private int mPageNumber;
 
+    /**
+     * SetupMenu에서 사용하는 list view string table
+     */
+    private ArrayAdapter<String> arrayAdapter;
+
+    private ListView setupListView;
     /**
      * Factory method for this fragment class. Constructs a new fragment for the given page number.
      */
@@ -78,6 +87,27 @@ public class SetupMenuActivity extends Fragment {
                 Toast.makeText(getActivity(), "Slide 1 Button clicked", Toast.LENGTH_LONG).show();
             }
         });
+
+        //arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
+        //arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
+
+        /*List View Data 정의*/
+/*        arrayAdapter.add("11111111");
+        arrayAdapter.add("222222222");
+        arrayAdapter.add("33333333333");
+        arrayAdapter.add("44444444444");
+        arrayAdapter.add("55555555555");
+        arrayAdapter.add("66666666666");
+        arrayAdapter.add("7777777777");
+        arrayAdapter.add("8888888888");
+        arrayAdapter.add("99999999999");
+        arrayAdapter.add("000000000000");
+
+        // List View를 Inflate시킨다.
+        setupListView = (ListView)rootView.findViewById(R.id.setupListView);
+
+        //ListView에 Adapter를 연결한다.
+        setupListView.setAdapter(arrayAdapter);*/
 
 
         return rootView;
