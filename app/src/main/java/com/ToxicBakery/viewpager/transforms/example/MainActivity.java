@@ -59,6 +59,7 @@ public class MainActivity extends Activity implements OnNavigationListener {
     private static final String KEY_SELECTED_CLASS = "KEY_SELECTED_CLASS";
     private static final ArrayList<TransformerItem> TRANSFORM_CLASSES;
     private static final String TAG = "MainActivity";
+    private static final int dwPageNum = 3;
 
     static {
         TRANSFORM_CLASSES = new ArrayList<>();
@@ -114,7 +115,7 @@ public class MainActivity extends Activity implements OnNavigationListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        int selectedPage = 0;   // yhcha, Init Page set
+        int selectedPage = 1;   // yhcha, Init Page set
         if (savedInstanceState != null) {
             mSelectedItem = savedInstanceState.getInt(KEY_SELECTED_CLASS);
             selectedPage = savedInstanceState.getInt(KEY_SELECTED_PAGE);
@@ -231,7 +232,7 @@ public class MainActivity extends Activity implements OnNavigationListener {
 
         @Override
         public int getCount() {
-            return 5;
+            return dwPageNum;
         }
 
     }
