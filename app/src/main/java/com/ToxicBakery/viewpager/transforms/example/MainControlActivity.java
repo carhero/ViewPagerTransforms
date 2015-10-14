@@ -68,7 +68,7 @@ public class MainControlActivity extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout containing a title and body text.
         ViewGroup rootView = (ViewGroup) inflater
-                .inflate(R.layout.fragment_main_page, container, false);
+                .inflate(R.layout.fragment_main_control_page, container, false);
 
         Button button = (Button) rootView.findViewById(R.id.slide2_button);
         button.setOnClickListener(new View.OnClickListener() {
