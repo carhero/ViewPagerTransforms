@@ -22,7 +22,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -33,7 +32,7 @@ import android.widget.Toast;
  * <p>This class is used by the {@link CardFlipActivity} and {@link
  * ScreenSlideActivity} samples.</p>
  */
-public class Slide3Activity extends Fragment {
+public class MainControlActivity extends Fragment {
     /**
      * The argument key for the page number this fragment represents.
      */
@@ -47,15 +46,15 @@ public class Slide3Activity extends Fragment {
     /**
      * Factory method for this fragment class. Constructs a new fragment for the given page number.
      */
-    public static Slide3Activity create(int pageNumber) {
-        Slide3Activity fragment = new Slide3Activity();
+    public static MainControlActivity create(int pageNumber) {
+        MainControlActivity fragment = new MainControlActivity();
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, pageNumber);
         fragment.setArguments(args);
         return fragment;
     }
 
-    public Slide3Activity() {
+    public MainControlActivity() {
     }
 
     @Override
@@ -69,13 +68,13 @@ public class Slide3Activity extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout containing a title and body text.
         ViewGroup rootView = (ViewGroup) inflater
-                .inflate(R.layout.fragment_slide3, container, false);
+                .inflate(R.layout.fragment_main_page, container, false);
 
-        Button button = (Button) rootView.findViewById(R.id.slide3_button);
+        Button button = (Button) rootView.findViewById(R.id.slide2_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Slide 3 Button clicked", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "Slide 2 Button clicked", Toast.LENGTH_LONG).show();
             }
         });
 

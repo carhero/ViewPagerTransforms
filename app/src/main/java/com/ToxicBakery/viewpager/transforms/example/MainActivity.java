@@ -210,9 +210,9 @@ public class MainActivity extends Activity implements OnNavigationListener {
             // 여기에서 Page 전환 전 Layout 설정을 변경해준다.
             switch(position)
             {
-                case 0: fragment = Slide1Activity.create(position);    break;
-                case 1: fragment = Slide2Activity.create(position);    break;
-                case 2: fragment = Slide3Activity.create(position);    break;
+                case 0: fragment = SetupMenuActivity.create(position);    break;
+                case 1: fragment = MainControlActivity.create(position);    break;
+                case 2: fragment = PlayListActivity.create(position);    break;
 
                 default:
                 {
