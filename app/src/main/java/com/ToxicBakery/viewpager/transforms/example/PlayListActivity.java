@@ -60,7 +60,7 @@ public class PlayListActivity extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPageNumber = getArguments().getInt(ARG_PAGE);
+        mPageNumber = getArguments().getInt(ARG_PAGE);ㅏ
     }
 
     @Override
@@ -70,13 +70,14 @@ public class PlayListActivity extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater
                 .inflate(R.layout.fragment_playlist_page, container, false);
 
-        Button button = (Button) rootView.findViewById(R.id.slide3_button);
+        // Button임시 삭제함.
+        /*Button button = (Button) rootView.findViewById(R.id.slide3_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "Slide 3 Button clicked", Toast.LENGTH_LONG).show();
             }
-        });
+        });*/
 
         return rootView;
     }

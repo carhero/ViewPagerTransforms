@@ -17,6 +17,7 @@
 package com.ToxicBakery.viewpager.transforms.example;
 
 import android.app.Fragment;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 
 /**
@@ -50,7 +53,7 @@ public class SetupMenuActivity extends Fragment {
      * SetupMenu에서 사용하는 list view string table
      */
     private ArrayAdapter<String> arrayAdapter;
-
+    private ArrayList<String> arrayList;
     private ListView setupListView;
     /**
      * Factory method for this fragment class. Constructs a new fragment for the given page number.
@@ -88,11 +91,11 @@ public class SetupMenuActivity extends Fragment {
             }
         });
 
-        //arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
-        //arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
+        arrayList = new ArrayList<String>();
+        arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1);
 
         /*List View Data 정의*/
-/*        arrayAdapter.add("11111111");
+        arrayAdapter.add("11111111");
         arrayAdapter.add("222222222");
         arrayAdapter.add("33333333333");
         arrayAdapter.add("44444444444");
@@ -102,13 +105,19 @@ public class SetupMenuActivity extends Fragment {
         arrayAdapter.add("8888888888");
         arrayAdapter.add("99999999999");
         arrayAdapter.add("000000000000");
+        arrayAdapter.add("8888888888");
+        arrayAdapter.add("99999999999");
+        arrayAdapter.add("000000000000");
+        arrayAdapter.add("8888888888");
+        arrayAdapter.add("99999999999");
+        arrayAdapter.add("000000000000");
 
         // List View를 Inflate시킨다.
         setupListView = (ListView)rootView.findViewById(R.id.setupListView);
 
         //ListView에 Adapter를 연결한다.
-        setupListView.setAdapter(arrayAdapter);*/
-
+        setupListView.setAdapter(arrayAdapter);
+        //setupListView.setDrawingCacheBackgroundColor(Color.BLACK);
 
         return rootView;
     }

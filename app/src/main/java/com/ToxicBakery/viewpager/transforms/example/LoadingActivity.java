@@ -11,6 +11,7 @@ import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -52,7 +53,6 @@ public class LoadingActivity extends Activity {
             actionBar.hide();
         }*/
 
-        setContentView(R.layout.activity_loading);
         // 3sec Thread needed to escape loading page
 
         // wifi check routine is needed to configure wireless settings.
@@ -69,6 +69,11 @@ public class LoadingActivity extends Activity {
         ThreadSendMessage threadSendMessage = new ThreadSendMessage();
         threadSendMessage.run();
         threadSendMessage.setIsRunable(true);
+
+        //Remove notification bar
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        setContentView(R.layout.activity_loading);
     }
 
     @Override
