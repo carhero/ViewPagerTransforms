@@ -53,16 +53,6 @@ public class LoadingActivity extends Activity {
             actionBar.hide();
         }*/
 
-        // 3sec Thread needed to escape loading page
-
-        // wifi check routine is needed to configure wireless settings.
-
-        // Icon & Text create
-        buttonConnect = (Button)findViewById(R.id.connectButton);
-        buttonProceed = (Button)findViewById(R.id.proceedButton);
-        imageViewWifiIcon = (ImageView)findViewById(R.id.wifi_cant_use);
-        textViewHelpMsg = (TextView)findViewById(R.id.helpText);
-
         // 메인 핸들러 생성
         mMainHandler = new SendMassgeHandler();
 
@@ -74,6 +64,7 @@ public class LoadingActivity extends Activity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_loading);
+
     }
 
     @Override
@@ -88,7 +79,7 @@ public class LoadingActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_loading, menu);
-        return true;
+        return false;
     }
 
     @Override
@@ -116,6 +107,12 @@ public class LoadingActivity extends Activity {
             switch (msg.what)
             {
                 case 0x00:
+                    // Icon & Text create
+                    buttonConnect = (Button)findViewById(R.id.connectButton);
+                    buttonProceed = (Button)findViewById(R.id.proceedButton);
+                    imageViewWifiIcon = (ImageView)findViewById(R.id.wifi_cant_use);
+                    textViewHelpMsg = (TextView)findViewById(R.id.helpText);
+
                     Log.d(TAG, "handlerMessage : " + msg.what);
                     break;
 

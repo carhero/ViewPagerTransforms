@@ -17,12 +17,17 @@
 package com.ToxicBakery.viewpager.transforms.example;
 
 import android.app.Fragment;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 
 /**
@@ -43,6 +48,58 @@ public class PlayListActivity extends Fragment {
      */
     private int mPageNumber;
 
+    private ListView listView;
+
+    private ArrayList<PlayListSegmentActivity> arrayList;
+
+    //ListView list;
+    String[] web = {
+            "Google Plus",
+            "Twitter",
+            "Windows",
+            "Bing",
+            "Itunes",
+            "Wordpress",
+            "Drupal",
+            "Google Plus",
+            "Twitter",
+            "Windows",
+            "Bing",
+            "Itunes",
+            "Wordpress",
+            "Drupal",
+            "Google Plus",
+            "Twitter",
+            "Windows",
+            "Bing",
+            "Itunes",
+            "Wordpress",
+            "Drupal",
+    } ;
+    Integer[] imageId = {
+            R.drawable.afghanistan,
+            R.drawable.bangladesh,
+            R.drawable.india,
+            R.drawable.japan,
+            R.drawable.skorea,
+            R.drawable.nepal,
+            R.drawable.srilanka,
+            R.drawable.afghanistan,
+            R.drawable.bangladesh,
+            R.drawable.india,
+            R.drawable.japan,
+            R.drawable.skorea,
+            R.drawable.nepal,
+            R.drawable.srilanka,
+            R.drawable.afghanistan,
+            R.drawable.bangladesh,
+            R.drawable.india,
+            R.drawable.japan,
+            R.drawable.skorea,
+            R.drawable.nepal,
+            R.drawable.srilanka,
+    };
+
     /**
      * Factory method for this fragment class. Constructs a new fragment for the given page number.
      */
@@ -60,24 +117,32 @@ public class PlayListActivity extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPageNumber = getArguments().getInt(ARG_PAGE);ㅏ
+        mPageNumber = getArguments().getInt(ARG_PAGE);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout containing a title and body text.
-        ViewGroup rootView = (ViewGroup) inflater
-                .inflate(R.layout.fragment_playlist_page, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_playlist_page, container, false);
 
-        // Button임시 삭제함.
-        /*Button button = (Button) rootView.findViewById(R.id.slide3_button);
-        button.setOnClickListener(new View.OnClickListener() {
+        PlayListSegmentActivity adapter = new PlayListSegmentActivity(getActivity(), web, imageId);
+
+        listView = (ListView) rootView.findViewById(R.id.listView);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        Intent i = new Intent(getActivity(), NowPlayingActivity.class);
+
             @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(), "Slide 3 Button clicked", Toast.LENGTH_LONG).show();
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getActivity(), "listView pressed " + position, Toast.LENGTH_LONG).show();
+
+                startActivity(i);
             }
-        });*/
+        });
+
+        listView.setBackgroundColor(Color.BLUE);
 
         return rootView;
     }

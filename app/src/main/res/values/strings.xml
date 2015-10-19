@@ -24,5 +24,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_fragment_slide1">fragment_slide1</string>
     <string name="title_activity_loading">LoadingActivity</string>
+    <string name="title_activity_now_playing">NowPlayingActivity</string>
 
 </resources>

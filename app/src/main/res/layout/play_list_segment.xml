@@ -1,0 +1,55 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    android:paddingBottom="0dp"
+    android:background="#ffffffff"
+    android:orientation="horizontal"
+    tools:context="com.ToxicBakery.viewpager.transforms.example.LoadingActivity"
+    android:weightSum="1">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listViewDataIcon"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#ff000000"
+                android:text="Large Text"
+                android:id="@+id/listViewLargeText"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/listViewDataIcon"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#ff000000"
+                android:text="Small Text"
+                android:id="@+id/listViewSubText"
+                android:layout_below="@+id/listViewLargeText"
+                android:layout_toRightOf="@+id/listViewDataIcon"
+                android:layout_alignRight="@+id/listViewLargeText"
+                android:layout_alignEnd="@+id/listViewLargeText" />
+
+        </LinearLayout>
+
+</LinearLayout>
